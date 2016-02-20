@@ -2,9 +2,9 @@
   "name": "emtorplayer.video.player",
   "version": "0.0.1",
   "description": "Minimal torrent video player",
-  "main": "player/main.js",
+  "main": "main.js",
   "scripts": {
-    "start": "electron player/main.js"
+    "start": "electron main.js"
   },
   "repository": {
     "type": "git",
