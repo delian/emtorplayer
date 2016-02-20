@@ -38,3 +38,5 @@ node_modules
 # Backups
 *~
 
+# Bower
+bower_components

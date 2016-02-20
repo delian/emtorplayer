@@ -1,0 +1,27 @@
+{
+  "name": "emtorplayer.video.player",
+  "description": "Minimal torrent video player",
+  "main": "main.js",
+  "authors": [
+    "GitHub"
+  ],
+  "license": "APACHE 2.0",
+  "keywords": [
+    "torrent",
+    "video",
+    "player"
+  ],
+  "homepage": "https://github.com/delian/emtorplayer",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "jquery-ui": "^1.11.4"
+  }
+}
