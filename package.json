@@ -1,0 +1,33 @@
+{
+  "name": "emtorplayer.video.player",
+  "version": "0.0.1",
+  "description": "Minimal torrent video player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron player/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delian/emtorplayer.git"
+  },
+  "keywords": [
+    "torrent",
+    "video",
+    "player"
+  ],
+  "author": "GitHub",
+  "license": "APACHE 2.0",
+  "bugs": {
+    "url": "https://github.com/delian/emtorplayer/issues"
+  },
+  "homepage": "https://zamunda.se",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.7",
+    "wcjs-prebuilt": "^2.0.8"
+  },
+  "dependencies": {
+    "peerflix": "^0.32.4",
+    "wcjs-player": "^0.5.5",
+    "wcjs-prebuilt": "^2.0.8"
+  }
+}
