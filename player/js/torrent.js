@@ -1,5 +1,6 @@
 var peerflix = require('peerflix');
 var EventEmitter = require('events').EventEmitter;
+var util = require('util');
 
 // Auto detect of files
 var ext = ["mkv", "avi", "mp4", "mpg", "mpeg", "webm", "flv", "ogg", "ogv", "mov", "wmv", "3gp", "3g2"];
@@ -10,12 +11,14 @@ function isVideo(name) {
     return video;
 }
 
-function TorrentClass (magnet,options) {
+function TorrentClass (magnet,o) {
     if (!(this instanceof TorrentClass)) {
         return new TorrentClass(magnet);
     }
     
     var me = this;
+    
+    var options = o || {};
     
     me.port = options.port || (30000 + parseInt(Math.random() * 30000));
     me.videoOn = options.videoOn || false;
@@ -54,7 +57,7 @@ function TorrentClass (magnet,options) {
 }
 
 TorrentClass.prototype.focusOn = function(file) {
-   me.streamsQueue.push(file.createReadStream());
+   this.streamsQueue.push(file.createReadStream());
 }
 
 util.inherits(TorrentClass, EventEmitter); // Add event emitter options

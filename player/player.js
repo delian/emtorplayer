@@ -1,6 +1,6 @@
 var wjs = require("wcjs-player");
 var wcjs = require("wcjs-prebuilt");
-var torrent = require('js/torrent');
+var torrent = require('./js/torrent');
 var player;
 
 function init() {

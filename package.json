@@ -32,8 +32,9 @@
     "wcjs-prebuilt": "^2.0.8"
   },
   "dependencies": {
-    "peerflix": "^0.32.4",
     "electron-prebuilt": "^0.36.0",
+    "peerflix": "^0.32.4",
+    "util": "^0.10.3",
     "wcjs-player": "^0.5.5",
     "wcjs-prebuilt": "^2.0.8"
   }
