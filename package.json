@@ -15,7 +15,7 @@
     "video",
     "player"
   ],
-  "author": "GitHub",
+  "author": "Delian Delchev delian.delchev@gmail.com",
   "license": "APACHE 2.0",
   "bugs": {
     "url": "https://github.com/delian/emtorplayer/issues"
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "peerflix": "^0.32.4",
+    "electron-prebuilt": "^0.36.0",
     "wcjs-player": "^0.5.5",
     "wcjs-prebuilt": "^2.0.8"
   }
