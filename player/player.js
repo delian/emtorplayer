@@ -17,6 +17,7 @@ function init() {
            videoOn = true;
            var name = "http://"+t.host+":"+t.port+"/"+file.name;
            console.log("Start video play for",name);
+           document.title = file.name;
            setTimeout(function() {
                startVideo(name);
            },2000);

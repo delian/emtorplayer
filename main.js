@@ -12,7 +12,16 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({
+      'min-width': 800,
+      'min-height': 600,
+      show: true,
+      //fullscreen: true,
+      resizable: true,
+      title: 'EMTOR Video Player',
+      //auto-hide-menu-bar: true,
+      icon: __dirname+'/player/img/player.png'
+  });
 
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/player/index.html');
