@@ -26,13 +26,14 @@ function TorrentClass (magnet,o) {
     me.magnet = magnet;
     
     me.streamsQueue = [];
-    
+
     me.engine = peerflix(magnet, { hostname: me.host, port: me.port });
 
     me.engine.on('ready', function() {
         setInterval(function() {
             me.emit('peers',me.engine);
         },1500);
+
         me.engine.files.forEach(function(file) {
             console.log('filename:', file.name);
             me.emit('file', file);
@@ -46,14 +47,13 @@ function TorrentClass (magnet,o) {
 
 
     me.engine.on('idle', function() {
-        console.log('EV: idle', arguments);
-        document.getElementById('peers').style.display = 'none';
+        me.emit('idle');
     });
 
 
-    me.engine.on('download', function() {
-        console.log('EV: download', arguments);
-    });    
+    me.engine.on('download', function(id,data) {
+        me.emit('download',{id: id, data: data, pieces: me.engine.torrent.pieces.length, bitfield: me.engine.bitfield });
+    });
 }
 
 TorrentClass.prototype.focusOn = function(file) {
