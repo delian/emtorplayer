@@ -29,10 +29,20 @@ function TorrentClass (magnet,o) {
 
     me.engine = peerflix(magnet, { hostname: me.host, port: me.port });
 
+    me.clearPeers = null;
+    me.clearSpeed = null;
+
     me.engine.on('ready', function() {
-        setInterval(function() {
+        me.clearPeers = setInterval(function() {
             me.emit('peers',me.engine);
         },1500);
+
+        me.clearSpeed = setInterval(function() {
+            //console.log('Emitted',me.engine);
+            var count=0;
+            for (var i=0;i<me.engine.torrent.pieces.length;i++) count+=me.engine.bitfield.get(i);
+            me.emit('speed',me.engine.swarm.downloadSpeed(), count/me.engine.torrent.pieces.length, (me.engine.swarm.downloaded / me.engine.torrent.length)<1?(me.engine.swarm.downloaded/me.engine.torrent.length):1);
+        },400);
 
         me.engine.files.forEach(function(file) {
             console.log('filename:', file.name);
@@ -48,6 +58,8 @@ function TorrentClass (magnet,o) {
 
     me.engine.on('idle', function() {
         me.emit('idle');
+        clearInterval(me.clearPeers);
+        clearInterval(me.clearSpeed);
     });
 
 
@@ -58,7 +70,7 @@ function TorrentClass (magnet,o) {
 
 TorrentClass.prototype.focusOn = function(file) {
    this.streamsQueue.push(file.createReadStream());
-}
+};
 
 util.inherits(TorrentClass, EventEmitter); // Add event emitter options
 
