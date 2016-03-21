@@ -4,11 +4,13 @@ function Poster() {
 }
 
 Poster.prototype.bringInFront = function() {
+    if (!this.el) this.el = document.getElementById('background');
     this.el.style.zIndex = 1;
     this.el.style.display = 'block';
 };
 
 Poster.prototype.sendToBack = function() {
+    if (!this.el) this.el = document.getElementById('background');
     this.el.style.zIndex = -1;
     this.el.style.display = 'none';
 };

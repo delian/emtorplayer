@@ -26,6 +26,14 @@ function Player(url) {
     var el = document.createElement('div');
     el.className = "pieces";
 
+    player.onPlaying(function() {
+        poster.hide();
+    });
+    
+    player.onEnded(function() {
+        poster.show();
+    });
+
     document.getElementsByClassName('wcp-progress-bar')[0].appendChild(el);
 
     t.on('videofile',function(file) {
@@ -60,7 +68,7 @@ function Player(url) {
     });
 
     t.on('download', function(o) {
-        console.log('D',o.pieces);
+        //console.log('D',o.pieces);
         el.innerHTML=me.buildPieces(o.pieces,o.bitfield);
     });
 }
