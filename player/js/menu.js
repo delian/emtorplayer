@@ -32,6 +32,14 @@ function menu() {
                     }
                 },
                 {
+                    label: 'Settings',
+                    accelerator: 'Command+S',
+                    click: function() {
+                        var win = remote.getCurrentWindow();
+                        win.setFullScreen(!win.isFullScreen());
+                    }
+                },
+                {
                     label: 'Restart',
                     accelerator: 'Command+R',
                     click: function() { remote.getCurrentWindow().reload(); }
