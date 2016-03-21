@@ -8,6 +8,8 @@ function Player(url) {
     if (!(this instanceof Player)) return new Player(url);
 
     var me = this;
+    
+    poster.show(); // Default background
 
     var player = new wjs("#player").addPlayer({ autoplay: true, wcjs: wcjs });
     me.player = player;

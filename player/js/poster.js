@@ -4,7 +4,7 @@ function Poster() {
     if (!(this instanceof Poster)) return new Poster();
     this.el = document.getElementById('background');
     this.poster = null;
-    this.defaultPoster = "url(../background.jpg)"
+    this.defaultPoster = "url(img/background.jpg)"
 }
 
 Poster.prototype.bringInFront = function(o) {
