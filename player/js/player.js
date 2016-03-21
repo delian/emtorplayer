@@ -1,15 +1,8 @@
 var wjs = require("wcjs-player");
 var wcjs = require("wcjs-prebuilt");
-var torrent = require('./js/torrent');
-var menu = require('./js/menu');
-var poster = require('./js/poster')();
-var config = require('./js/config')();
-var player;
-
-function init() {
-    menu();
-    Player("magnet:?xt=urn:btih:dcc70364b791cb6cebaada04c4093c220d8257ee&dn=The.Big.Bang.Theory.S09E11.HDTV.x264-LOL%5Bettv%5D&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969");
-}
+var torrent = require('./torrent');
+var poster = require('./poster')();
+var config = require('./config')();
 
 function Player(url) {
     if (!(this instanceof Player)) return new Player(url);
@@ -20,11 +13,15 @@ function Player(url) {
     me.player = player;
 
     player.onPlaying(function() {
-        //poster.hide();
+        poster.hide();
     });
 
     player.onEnded(function() {
         poster.show();
+    });
+    
+    player.onPaused(function() {
+        //poster.show();
     });
 
     var t = torrent(url);
@@ -33,8 +30,14 @@ function Player(url) {
     me.videoIsOn = false;
 
     var el = document.createElement('div');
-    el.className = "pieces";
+    el.className = "infoBtn wcp-button wcp-right";
+    el.onclick = function() {
+        poster.toggle(true);
+    };
+    document.getElementsByClassName('wcp-toolbar')[0].appendChild(el);
 
+    el = document.createElement('div');
+    el.className = "pieces";
     document.getElementsByClassName('wcp-progress-bar')[0].appendChild(el);
 
     t.on('videofile',function(file) {
@@ -66,7 +69,7 @@ function Player(url) {
     t.on('idle', function() {
         elPeers.style.visibility = 'hidden';
         elSpeed.style.visibility = 'hidden';
-        poster.hide(); // Hide the poster
+        //poster.hide(); // Hide the poster
     });
 
     t.on('download', function(o) {
@@ -84,3 +87,5 @@ Player.prototype.buildPieces = function(pieces,bitfield) {
 Player.prototype.startVideo = function (v) {
     this.player.addPlaylist(v);
 };
+
+module.exports = Player;

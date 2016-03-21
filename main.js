@@ -15,7 +15,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
       'min-width': 800,
       'min-height': 600,
-      show: false,
+      show: true,
       //fullscreen: true,
       resizable: true,
       title: 'EMTOR Video Player',
