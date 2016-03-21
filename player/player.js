@@ -18,6 +18,15 @@ function Player(url) {
 
     var player = new wjs("#player").addPlayer({ autoplay: true, wcjs: wcjs });
     me.player = player;
+
+    player.onPlaying(function() {
+        //poster.hide();
+    });
+
+    player.onEnded(function() {
+        poster.show();
+    });
+
     var t = torrent(url);
     me.torrent = t;
 
@@ -25,14 +34,6 @@ function Player(url) {
 
     var el = document.createElement('div');
     el.className = "pieces";
-
-    player.onPlaying(function() {
-        poster.hide();
-    });
-    
-    player.onEnded(function() {
-        poster.show();
-    });
 
     document.getElementsByClassName('wcp-progress-bar')[0].appendChild(el);
 
@@ -42,6 +43,7 @@ function Player(url) {
             me.videoIsOn = true;
             var name = "http://"+t.host+":"+t.port+"/"+file.name;
             console.log("Start video play for",name);
+            poster.showByName(file.name);
             document.title = file.name;
             setTimeout(function() {
                 me.startVideo(name);
