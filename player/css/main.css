@@ -116,3 +116,16 @@ body,html{
     background-position: center;
     background-image: url(../img/info.svg);
 }
+
+#settings {
+    z-index: 20;
+    text-shadow: 0px 0px 0px #000000 !important;
+}
+
+#hidden {
+    display: none;
+}
+
+.settingsTable {
+    width: 100%;
+}

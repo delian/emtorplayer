@@ -35,8 +35,19 @@ function menu() {
                     label: 'Settings',
                     accelerator: 'Command+S',
                     click: function() {
-                        var win = remote.getCurrentWindow();
-                        win.setFullScreen(!win.isFullScreen());
+                        $('#settings').dialog({
+                            modal: true,
+                            width: '80%',
+                            height: 500,
+                            buttons: {
+                                "Confirm": function() {
+                                    $(this).dialog("close");
+                                },
+                                "Cancel": function() {
+                                    $(this).dialog("close");
+                                }
+                            }
+                        });
                     }
                 },
                 {

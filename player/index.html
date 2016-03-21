@@ -5,8 +5,8 @@
     <title>Player</title>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="init.js"></script>
   </head>
   <body onload="init()">
@@ -20,5 +20,17 @@
         <span id="imdbDescription"></span>
     </span>
     <div id="player"></div>
+    <div id="hidden">
+        <div id="settings" title="Settings">
+            <form>
+                <fieldset>
+                    <table class="settingsTable" border="0" cellpadding="0" cellspacing="0">
+                        <tr><td align="right"><label for="peers">Maximum Peers:</label></td><td><input name="peers" type="number" value="100" class="text ui-widget-content ui-corner-all"></td></tr>
+                        <tr><td align="right"><label for="peers">Maximum Peers:</label></td><td><input name="peers" type="number" value="100" class="text ui-widget-content ui-corner-all"></td></tr>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
   </body>
 </html>
