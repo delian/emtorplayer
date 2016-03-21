@@ -2,7 +2,8 @@ var wjs = require("wcjs-player");
 var wcjs = require("wcjs-prebuilt");
 var torrent = require('./js/torrent');
 var menu = require('./js/menu');
-var poster = require('./js/poster');
+var poster = require('./js/poster')();
+var config = require('./js/config')();
 var player;
 
 function init() {
