@@ -1,63 +1,13 @@
 var wjs = require("wcjs-player");
 var wcjs = require("wcjs-prebuilt");
 var torrent = require('./js/torrent');
+var menu = require('./js/menu');
+var poster = require('./js/poster');
 var player;
-
-var remote = require('remote');
-var Menu = remote.require('menu');
 
 function init() {
     menu();
     Player("magnet:?xt=urn:btih:dcc70364b791cb6cebaada04c4093c220d8257ee&dn=The.Big.Bang.Theory.S09E11.HDTV.x264-LOL%5Bettv%5D&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969");
-}
-
-function menu() {
-    var template = [
-        {
-            label: 'EMTorPlayer',
-            submenu: [
-                {
-                    label: 'About EMTorPlayer',
-                    selector: 'orderFrontStandardAboutPanel:'
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    label: 'Quit',
-                    accelerator: 'Command+Q',
-                    selector: 'terminate:'
-                },
-            ]
-        },
-        {
-            label: 'View',
-            submenu: [
-                {
-                    label: 'Fullscreen',
-                    accelerator: 'Command+F',
-                    click: function() {
-                        var win = remote.getCurrentWindow();
-                        win.setFullScreen(!win.isFullScreen());
-                    }
-                },
-                {
-                    label: 'Restart',
-                    accelerator: 'Command+R',
-                    click: function() { remote.getCurrentWindow().reload(); }
-                },
-                {
-                    label: 'Toggle DevTools',
-                    accelerator: 'Alt+Command+I',
-                    click: function() { remote.getCurrentWindow().toggleDevTools(); }
-                },
-            ]
-        },
-    ];
-
-    menu = Menu.buildFromTemplate(template);
-    Menu.setApplicationMenu(menu);
-    remote.getCurrentWindow().show();
 }
 
 function Player(url) {
@@ -97,14 +47,15 @@ function Player(url) {
         elPeers.innerHTML = 'Peers: '+engine.swarm.connections.length+' / '+ Object.keys(engine.swarm._peers).length;
     });
 
-    t.on('speed', function(speed,total) {
+    t.on('speed', function(speed,total,downloaded) {
         //console.log('Speed', speed, total);
-        elSpeed.innerHTML = 'Speed: '+(speed/1024).toFixed(1)+' KB/s ('+(total*100).toFixed(1)+'%)';
+        elSpeed.innerHTML = 'Speed: '+(speed/1024).toFixed(1)+' KB/s ('+(total*100).toFixed(1)+'%)<BR>Bytes downloaded: '+downloaded;
     });
 
     t.on('idle', function() {
         elPeers.style.visibility = 'hidden';
         elSpeed.style.visibility = 'hidden';
+        poster.hide(); // Hide the poster
     });
 
     t.on('download', function(o) {

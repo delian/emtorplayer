@@ -41,8 +41,8 @@ function TorrentClass (magnet,o) {
             //console.log('Emitted',me.engine);
             var count=0;
             for (var i=0;i<me.engine.torrent.pieces.length;i++) count+=me.engine.bitfield.get(i);
-            me.emit('speed',me.engine.swarm.downloadSpeed(), count/me.engine.torrent.pieces.length, (me.engine.swarm.downloaded / me.engine.torrent.length)<1?(me.engine.swarm.downloaded/me.engine.torrent.length):1);
-        },400);
+            me.emit('speed',me.engine.swarm.downloadSpeed(), count/me.engine.torrent.pieces.length, me.engine.swarm.downloaded, (me.engine.swarm.downloaded / me.engine.torrent.length)<1?(me.engine.swarm.downloaded/me.engine.torrent.length):1);
+        },500);
 
         me.engine.files.forEach(function(file) {
             console.log('filename:', file.name);
