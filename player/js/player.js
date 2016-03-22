@@ -59,16 +59,17 @@ function Player(url) {
             console.log("Start video play for",name);
             poster.showByName(file.name);
             document.title = file.name;
-            subs.findByFile(file.name, function(err,subfile) {
+            subs.findByFile(file.name, function(err,subfile,lang) {
+                var s = {};
+                s[lang]=subfile;
+
                 setTimeout(function() {
                     if (err)
                         me.startVideo(name);
                     else {
                         me.startVideo({
                             url: name,
-                            subtitles: {
-                                "Subtitle": subfile
-                            }
+                            subtitles: s
                         });
                         console.log('SubDescr',player.subDesc(1));
                         console.log('SubTrack',player.subTrack(1));
