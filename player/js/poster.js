@@ -72,14 +72,21 @@ Poster.prototype.omdb = function(rule,cb) {
 Poster.prototype.showByName = function(name) {
     var me = this;
     me.bringInFront();
+    name = name.replace(/\W/g,' ')
+        .replace(/\s+/g,' ')
+        .replace(/\s+$/,'')
+        .replace(/^\s+/,'')
+        .replace(/\s(mkv|avi|mp4|mpg|mpeg|webm|flv|ogg|ogv|mov|wmv|3gp|3g2|cam|xvid|divx|lol|hdtv|dvd|ac3|hq|cm8|hive|hdcam).*$/i,'');
+/*
     name = name.replace(/\[.*?\]/,'')
         .replace(/\.(mkv|avi|mp4|mpg|mpeg|webm|flv|ogg|ogv|mov|wmv|3gp|3g2)/i,'')
-        .replace(/(cam|xvid|divx|lol|hdtv|dvd)/ig,'')
+        .replace(/(cam|xvid|divx|lol|hdtv|dvd|ac3|hq|cm8|hive)/ig,'')
         .replace(/\W/g,' ')
         .replace(/\s+/g,' ')
         .replace(/\s+$/,'')
         .replace(/^\s+/,'')
         .replace(/S\d+E\d+/ig,'');
+*/
     console.log('Searching for name',name);
     me.omdb({ title: name }, function(err, movie) {
         if (err) return console.error(err);

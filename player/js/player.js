@@ -3,6 +3,7 @@ var wcjs = require("wcjs-prebuilt");
 var torrent = require('./torrent');
 var poster = require('./poster')();
 var config = require('./config')();
+var subs = require('./subtitles')();
 
 var player = null;
 
@@ -32,6 +33,8 @@ function Player(url) {
         //poster.show();
     });
 
+    player.subtitles(false);
+
     var t = torrent(url);
     me.torrent = t;
 
@@ -56,9 +59,22 @@ function Player(url) {
             console.log("Start video play for",name);
             poster.showByName(file.name);
             document.title = file.name;
-            setTimeout(function() {
-                me.startVideo(name);
-            },2000);
+            subs.findByFile(file.name, function(err,subfile) {
+                setTimeout(function() {
+                    if (err)
+                        me.startVideo(name);
+                    else {
+                        me.startVideo({
+                            url: name,
+                            subtitles: {
+                                "Subtitle": subfile
+                            }
+                        });
+                        console.log('SubDescr',player.subDesc(1));
+                        console.log('SubTrack',player.subTrack(1));
+                    }
+                },2000);
+            });
         }
     });
 

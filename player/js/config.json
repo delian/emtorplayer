@@ -7,5 +7,6 @@
   "subsdir": "/tmp/subtitles",
   "downsize": 20,
   "downdir": "/tmp/torrents",
-  "downclear": false
+  "downclear": false,
+  "sublang": "eng"
 }
