@@ -55,21 +55,23 @@ function readValues() {
 function Settings() {
     
     initValues();
-    
-    $('#settings').dialog({
-        modal: true,
-        width: '95%',
-        height: 380,
-        buttons: {
-            "Confirm & Restart": function() {
-                readValues();
-                remote.getCurrentWindow().reload();
-            },
-            "Cancel": function() {
-                $(this).dialog("close");
+
+    setTimeout(function() {
+        $('#settings').dialog({
+            modal: true,
+            width: '95%',
+            height: 380,
+            buttons: {
+                "Confirm & Restart": function() {
+                    readValues();
+                    remote.getCurrentWindow().reload();
+                },
+                "Cancel": function() {
+                    $(this).dialog("close");
+                }
             }
-        }
-    });
+        });
+    },100);
 }
 
 module.exports = Settings;
