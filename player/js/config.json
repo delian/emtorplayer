@@ -1,3 +1,10 @@
 {
-
+  "peers": 100,
+  "download": 5000,
+  "upload": 1000,
+  "subsauto": true,
+  "subsdir": "/tmp/subtitles",
+  "downsize": 20,
+  "downdir": "/tmp/torrents",
+  "downclear": false
 }

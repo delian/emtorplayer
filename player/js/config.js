@@ -7,16 +7,16 @@ function Config() {
 
 Config.prototype.get = function(key,cb) {
     storage.get(key,function(err,data) {
-        if (err || (!data)) {
+        if (err || (!data) || (!data.val)) {
             if (config.hasOwnProperty(key)) return cb(null,config[key]);
             return cb(new Error(),undefined);
         }
-        return cb(null,data);
+        return cb(null,data.val);
     });
 };
 
 Config.prototype.set = function(key,value,cb) {
-    storage.set(key,value,cb);
+    storage.set(key,{ val: value },cb);
 };
 
 Config.prototype.clear = function(cb) {

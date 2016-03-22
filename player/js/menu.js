@@ -1,5 +1,6 @@
 var remote = require('remote');
 var Menu = remote.require('menu');
+var settings = require('./settings');
 
 function menu() {
     var template = [
@@ -34,21 +35,7 @@ function menu() {
                 {
                     label: 'Settings',
                     accelerator: 'Command+S',
-                    click: function() {
-                        $('#settings').dialog({
-                            modal: true,
-                            width: '80%',
-                            height: 500,
-                            buttons: {
-                                "Confirm": function() {
-                                    $(this).dialog("close");
-                                },
-                                "Cancel": function() {
-                                    $(this).dialog("close");
-                                }
-                            }
-                        });
-                    }
+                    click: settings
                 },
                 {
                     label: 'Restart',
