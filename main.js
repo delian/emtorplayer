@@ -11,6 +11,10 @@ const BrowserWindow = electron.BrowserWindow;
 let mainWindow;
 
 function createWindow () {
+
+  // Console.log
+  console.log('arguments',process.argv);
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
       'min-width': 800,
@@ -20,12 +24,11 @@ function createWindow () {
       resizable: true,
       title: 'EMTOR Video Player',
       autoHideMenuBar: true,
-      //auto-hide-menu-bar: true,
       icon: __dirname+'/player/img/player.png'
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL('file://' + __dirname + '/player/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/player/index.html?magnet='+escape(process.argv[2]||""));
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();

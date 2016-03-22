@@ -1,12 +1,18 @@
 var remote = require('remote');
 var Menu = remote.require('menu');
 var settings = require('./settings');
+var openUrl = require('./openurl');
 
 function menu() {
     var template = [
         {
             label: 'EMTorPlayer',
             submenu: [
+                {
+                    label: 'Open URL',
+                    accelerator: "CmdOrCtrl+O",
+                    click: openUrl
+                },
                 {
                     label: 'About EMTorPlayer',
                     selector: 'orderFrontStandardAboutPanel:'
@@ -16,9 +22,21 @@ function menu() {
                 },
                 {
                     label: 'Quit',
-                    accelerator: 'Command+Q',
+                    accelerator: 'CmdOrCtrl+Q',
                     selector: 'terminate:'
                 },
+            ]
+        },
+        {
+            label: "Edit",
+            submenu: [
+                { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+                { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+                { type: "separator" },
+                { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+                { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+                { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+                { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
             ]
         },
         {
@@ -26,7 +44,7 @@ function menu() {
             submenu: [
                 {
                     label: 'Fullscreen',
-                    accelerator: 'Command+F',
+                    accelerator: 'CmdOrCtrl+F',
                     click: function() {
                         var win = remote.getCurrentWindow();
                         win.setFullScreen(!win.isFullScreen());
@@ -34,17 +52,17 @@ function menu() {
                 },
                 {
                     label: 'Settings',
-                    accelerator: 'Command+S',
+                    accelerator: 'CmdOrCtrl+S',
                     click: settings
                 },
                 {
                     label: 'Restart',
-                    accelerator: 'Command+R',
+                    accelerator: 'CmdOrCtrl+R',
                     click: function() { remote.getCurrentWindow().reload(); }
                 },
                 {
                     label: 'Toggle DevTools',
-                    accelerator: 'Alt+Command+I',
+                    accelerator: 'Alt+CmdOrCtrl+I',
                     click: function() { remote.getCurrentWindow().toggleDevTools(); }
                 },
             ]

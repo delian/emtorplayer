@@ -4,14 +4,20 @@ var torrent = require('./torrent');
 var poster = require('./poster')();
 var config = require('./config')();
 
+var player = null;
+
 function Player(url) {
     if (!(this instanceof Player)) return new Player(url);
 
     var me = this;
-    
+
+    if (!player) player = new wjs("#player").addPlayer({ autoplay: true, wcjs: wcjs });
+
+    player.stop();
+    player.clearPlaylist();
+
     poster.show(); // Default background
 
-    var player = new wjs("#player").addPlayer({ autoplay: true, wcjs: wcjs });
     me.player = player;
 
     player.onPlaying(function() {
@@ -88,6 +94,7 @@ Player.prototype.buildPieces = function(pieces,bitfield) {
 
 Player.prototype.startVideo = function (v) {
     this.player.addPlaylist(v);
+    this.player.play();
 };
 
 module.exports = Player;

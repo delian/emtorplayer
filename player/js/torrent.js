@@ -1,9 +1,32 @@
 var peerflix = require('peerflix');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
+var config = require('./config.js')();
+var mkdirp = require('mkdirp');
 
 // Auto detect of files
 var ext = ["mkv", "avi", "mp4", "mpg", "mpeg", "webm", "flv", "ogg", "ogv", "mov", "wmv", "3gp", "3g2"];
+
+var opts = {};
+
+function fillOpts() {
+    config.get('peers',function(err,value) {
+        opts.connections = parseInt(value);
+        opts.uploads = parseInt(value*0.5);
+    });
+
+    config.get('incport',function(err,value) {
+       opts.listenPort = value;
+    });
+    
+    config.get('downdir',function(err,value) {
+        opts.tmp = value;
+        mkdirp(value, function (err) {
+            if (err) console.error(err);
+            else console.log('created directory',value);
+        });
+    });
+}
 
 function isVideo(name) {
     var video = false;
@@ -19,7 +42,7 @@ function TorrentClass (magnet,o) {
     var me = this;
     
     var options = o || {};
-    
+
     me.port = options.port || (30000 + parseInt(Math.random() * 30000));
     me.videoOn = options.videoOn || false;
     me.host = options.host || "127.0.0.1";
@@ -27,7 +50,12 @@ function TorrentClass (magnet,o) {
     
     me.streamsQueue = [];
 
-    me.engine = peerflix(magnet, { hostname: me.host, port: me.port });
+    opts.hostname = me.host;
+    opts.port = me.port;
+
+    console.log('Opening torrent engine with',opts);
+    me.engine = peerflix(magnet, opts);
+    me.engine.listen(opts.listenPort||6881);
 
     me.clearPeers = null;
     me.clearSpeed = null;
@@ -71,6 +99,8 @@ function TorrentClass (magnet,o) {
 TorrentClass.prototype.focusOn = function(file) {
    this.streamsQueue.push(file.createReadStream());
 };
+
+fillOpts();
 
 util.inherits(TorrentClass, EventEmitter); // Add event emitter options
 

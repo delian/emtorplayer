@@ -21,13 +21,21 @@
     </span>
     <div id="player"></div>
     <div id="hidden">
+        <div id="openurl" title="Open URL">
+            <form onsubmit="return false;">
+                <fieldset>
+                    <label for="openurlForm">URL: </label><input id="openurlForm" type="text" value="" class="text ui-widget-content ui-corner-all">
+                </fieldset>
+            </form>
+        </div>
         <div id="settings" title="Settings">
-            <form>
+            <form onsubmit="return false;">
                 <fieldset>
                     <table class="settingsTable" border="0" cellpadding="0" cellspacing="0">
                         <tr><td align="right"><label for="peersForm">Maximum Peers:</label></td><td><input id="peersForm" name="peers" type="number" value="100" class="text ui-widget-content ui-corner-all"></td></tr>
-                        <tr><td align="right"><label for="downloadForm">Maximum Download KB/s:</label></td><td><input id="downloadForm" name="download" type="number" value="5000" class="text ui-widget-content ui-corner-all"></td></tr>
-                        <tr><td align="right"><label for="uploadForm">Maximum Upload KB/s:</label></td><td><input id="uploadForm" name="upload" type="number" value="1000" class="text ui-widget-content ui-corner-all"></td></tr>
+                        <tr><td align="right"><label for="incPortForm">Default incoming port:</label></td><td><input id="incPortForm" name="incport" type="number" value="6881" class="text ui-widget-content ui-corner-all"></td></tr>
+                        <tr style="display:none"><td align="right"><label for="downloadForm">Maximum Download KB/s:</label></td><td><input id="downloadForm" name="download" type="number" value="5000" class="text ui-widget-content ui-corner-all"></td></tr>
+                        <tr style="display:none"><td align="right"><label for="uploadForm">Maximum Upload KB/s:</label></td><td><input id="uploadForm" name="upload" type="number" value="1000" class="text ui-widget-content ui-corner-all"></td></tr>
                         <tr><td align="right"><label for="subsautoForm">Auto download subtitles:</label></td><td>
                             <input type="radio" id=subsautoForm1 name="subsauto" checked><label for="subsautoForm1">On</label><input type="radio" id="subsautoForm2" name="subsauto"><label for="subsautoForm2">Off</label>
                         </td></tr>

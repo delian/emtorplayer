@@ -2,6 +2,7 @@
   "peers": 100,
   "download": 5000,
   "upload": 1000,
+  "incport": 6881,
   "subsauto": true,
   "subsdir": "/tmp/subtitles",
   "downsize": 20,

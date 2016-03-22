@@ -133,3 +133,7 @@ body,html{
 .text {
     font-size: 1em !important;
 }
+
+#openurlForm {
+    width: 85%;
+}
