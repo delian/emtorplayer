@@ -4,7 +4,9 @@
   "description": "Minimal torrent video player",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "build:bower": "cd player; bower install",
+    "build": "npm install && npm install --only=dev && npm run build:bower"
   },
   "repository": {
     "type": "git",
