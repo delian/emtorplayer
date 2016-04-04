@@ -4,7 +4,9 @@
   "description": "Minimal torrent video player",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "build:bower": "cd player; bower install",
+    "build": "npm install && npm install --only=dev && npm run build:bower"
   },
   "repository": {
     "type": "git",
@@ -22,14 +24,10 @@
   },
   "homepage": "https://zamunda.se",
   "devDependencies": {
+    "bower": "^1.7.7",
     "electron-packager": "^5.2.1",
-    "electron-prebuilt": "^0.36.7",
-    "grunt": "^0.4.5",
-    "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-uglify": "^0.11.1",
-    "grunt-npm-install": "^0.2.0",
+    "electron-prebuilt": "^0.36.0",
+    "gulp": "^3.9.1",
     "wcjs-prebuilt": "^2.0.8"
   },
   "dependencies": {
