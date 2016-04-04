@@ -27,12 +27,10 @@
     "bower": "^1.7.7",
     "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.36.0",
-    "gulp": "^3.9.1",
-    "wcjs-prebuilt": "^2.0.8"
+    "gulp": "^3.9.1"
   },
   "dependencies": {
     "electron-json-storage": "^2.0.0",
-    "electron-prebuilt": "^0.36.0",
     "mkdirp": "^0.5.1",
     "omdb": "^0.5.0",
     "peerflix": "^0.32.4",
