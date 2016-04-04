@@ -19,11 +19,11 @@ function createWindow () {
   mainWindow = new BrowserWindow({
       'min-width': 800,
       'min-height': 600,
-      show: true,
+      show: false,
       //fullscreen: true,
       resizable: true,
       title: 'EMTOR Video Player',
-      autoHideMenuBar: true,
+      //autoHideMenuBar: true,
       icon: __dirname+'/player/img/player.png'
   });
 
@@ -31,7 +31,7 @@ function createWindow () {
   mainWindow.loadURL('file://' + __dirname + '/player/index.html?magnet='+escape(process.argv[2]||""));
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
