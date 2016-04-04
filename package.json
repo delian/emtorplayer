@@ -6,7 +6,10 @@
   "scripts": {
     "start": "electron main.js",
     "build:bower": "bower install",
-    "build": "npm install && npm install --only=dev && npm run build:bower"
+    "build": "npm install && npm install --only=dev && npm run build:bower",
+    "clean:bower": "rimraf player/bower_components",
+    "clean:modules": "rimraf node_modules",
+    "clean": "npm run clean:bower && npm run clean:modules"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,7 @@
     "bower": "^1.7.7",
     "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.36.0",
+    "rimraf": "^2.5.2",
     "gulp": "^3.9.1"
   },
   "dependencies": {
