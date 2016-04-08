@@ -22,7 +22,7 @@
     "pack:electron:win32": "electron-packager . emtorplayer-win32 --platform=win32 --arch=ia32",
     "pack:electron:win64": "electron-packager . emtorplayer-win64 --platform=win32 --arch=x64",
     "pack:electron:linux64": "electron-packager . emtorplayer-linux64 --platform=linux --arch=x64",
-    "pack:electron:osx64": "electron-packager . emtorplayer-osx64 --platform=dawrin --arch=x64",
+    "pack:electron:osx64": "electron-packager . emtorplayer-osx64 --platform=darwin --arch=x64",
     "pack:win32": "npm run build:win32 && npm run pack:electron:win32",
     "pack:win64": "npm run build:win64 && npm run pack:electron:win64",
     "pack:linux64": "npm run build:linux64 && npm run pack:electron:linux64",
