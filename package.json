@@ -19,6 +19,14 @@
     "build:win64": "npm run build:electron:win64 && npm run build:wcjs:win64 && npm run build",
     "build:win32": "npm run build:electron:win32 && npm run build:wcjs:win32 && npm run build",
     "build:linux64": "npm run build:electron:linux64 && npm run build:wcjs:linux64 && npm run build",
+    "pack:electron:win32": "electron-packager . emtorplayer-win32 --platform=win32 --arch=ia32",
+    "pack:electron:win64": "electron-packager . emtorplayer-win64 --platform=win32 --arch=x64",
+    "pack:electron:linux64": "electron-packager . emtorplayer-linux64 --platform=linux --arch=x64",
+    "pack:electron:osx64": "electron-packager . emtorplayer-osx64 --platform=dawrin --arch=x64",
+    "pack:win32": "npm run build:win32 && npm run pack:electron:win32",
+    "pack:win64": "npm run build:win64 && npm run pack:electron:win64",
+    "pack:linux64": "npm run build:linux64 && npm run pack:electron:linux64",
+    "pack:osx64": "npm run build:osx64 && npm run pack:electron:osx64",
     "clean:bower": "rimraf player/bower_components",
     "clean:modules": "rimraf node_modules",
     "clean": "npm run clean:bower && npm run clean:modules"
@@ -40,10 +48,11 @@
   "homepage": "https://zamunda.se",
   "devDependencies": {
     "bower": "^1.7.7",
+    "electron-builder": "^3.2.0",
     "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.36.0",
-    "rimraf": "^2.5.2",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "rimraf": "^2.5.2"
   },
   "dependencies": {
     "electron-json-storage": "^2.0.0",
