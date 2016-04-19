@@ -61,7 +61,7 @@
     "peerflix": "^0.32.4",
     "subtitler": "^2.4.0",
     "util": "^0.10.3",
-    "wcjs-player": "^0.5.5",
+    "wcjs-player": "^0.5.7",
     "wcjs-prebuilt": "^2.0.8"
   }
 }
