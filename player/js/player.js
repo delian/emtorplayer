@@ -1,5 +1,5 @@
 var wjs = require("wcjs-player");
-var wcjs = require("wcjs-prebuilt");
+//var wcjs = require("wcjs-prebuilt");
 var torrent = require('./torrent');
 var poster = require('./poster')();
 var config = require('./config')();
@@ -12,7 +12,7 @@ function Player(url) {
 
     var me = this;
 
-    if (!player) player = new wjs("#player").addPlayer({ autoplay: true, wcjs: wcjs });
+    if (!player) player = new wjs("#player").addPlayer({ autoplay: false, wcjs: require("wcjs-prebuilt") });
 
     player.stop();
     player.clearPlaylist();

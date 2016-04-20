@@ -9,7 +9,7 @@ function init() {
     menu();
     var url = "";
     if (window.location.search && window.location.search.match(/magnet\=/)) {
-        url=unescape(window.location.search.match(/magnet\=(.+)?/));
+        url=unescape(window.location.search.match(/magnet\=(.+)?/)[1]);
     }
     console.log('Window.location',window.location,url);
     Init(url);
