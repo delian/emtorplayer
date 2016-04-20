@@ -1,10 +1,26 @@
 'use strict';
 
+var log = console.log;
+
 const electron = require('electron');
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
+
+app.on( 'gpu-process-crashed',           function(){ log( 'gpu-process-crashed'           ); } );
+app.on( 'select-certificate',            function(){ log( 'select-certificate'            ); } );
+app.on( 'activate-with-no-open-windows', function(){ log( 'activate-with-no-open-windows' ); } );
+app.on( 'before-quit',                   function(){ log( 'before-quit'                   ); } );
+app.on( 'browser-window-blur',           function(){ log( 'browser-window-blur'           ); } );
+app.on( 'browser-window-focus',          function(){ log( 'browser-window-focus'          ); } );
+app.on( 'open-file',                     function(){ log( 'open-file'                     ); } );
+app.on( 'open-url',                      function(){ log( 'open-url'                      ); } );
+app.on( 'quit',                          function(){ log( 'quit'                          ); } );
+app.on( 'ready',                         function(){ log( 'ready'                         ); } );
+app.on( 'will-finish-launching',         function(){ log( 'will-finish-launching'         ); } );
+app.on( 'will-quit',                     function(){ log( 'will-quit'                     ); } );
+app.on( 'window-all-closed',             function(){ log( 'window-all-closed'             ); } );
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
