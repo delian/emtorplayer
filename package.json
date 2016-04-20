@@ -17,9 +17,9 @@
     "build:osx64:step": "npm run build && npm run build:electron:osx64 && npm run build:wcjs:osx64",
     "build:win32:step": "npm run build && npm run build:electron:win32 && npm run build:wcjs:win32",
     "build:linux64:step": "npm run build && npm run build:electron:linux64 && npm run build:wcjs:linux64",
-    "build:osx64": "cross-env npm_config_arch=x64 npm_config_platrofm=darwin WCJS_PLATFORM=osx WCJS_ARCH=x64 WCJS_RUNTIME=electron npm run build:osx64:step",
-    "build:win32": "cross-env npm_config_arch=ia32 npm_config_platrofm=win32 WCJS_PLATFORM=win32 WCJS_ARCH=ia32 WCJS_RUNTIME=electron npm run build:win32:step",
-    "build:linux64": "cross-env npm_config_arch=x64 npm_config_platrofm=linux WCJS_PLATFORM=linux WCJS_ARCH=x64 WCJS_RUNTIME=electron npm run build:linux64:step",
+    "build:osx64": "npm install cross-env && cross-env npm_config_arch=x64 npm_config_platrofm=darwin WCJS_PLATFORM=osx WCJS_ARCH=x64 WCJS_RUNTIME=electron npm run build:osx64:step",
+    "build:win32": "npm install cross-env && cross-env npm_config_arch=ia32 npm_config_platrofm=win32 WCJS_PLATFORM=win32 WCJS_ARCH=ia32 WCJS_RUNTIME=electron npm run build:win32:step",
+    "build:linux64": "npm install cross-env && cross-env npm_config_arch=x64 npm_config_platrofm=linux WCJS_PLATFORM=linux WCJS_ARCH=x64 WCJS_RUNTIME=electron npm run build:linux64:step",
     "pack:electron:win32": "electron-packager . emtorplayer-win32 --platform=win32 --arch=ia32",
     "pack:electron:linux64": "electron-packager . emtorplayer-linux64 --platform=linux --arch=x64",
     "pack:electron:osx64": "electron-packager . emtorplayer-osx64 --platform=darwin --arch=x64",
@@ -28,7 +28,7 @@
     "pack:osx64": "npm run build:osx64 && npm run pack:electron:osx64",
     "clean:bower": "rimraf player/bower_components",
     "clean:modules": "rimraf node_modules",
-    "clean": "npm run clean:bower && npm run clean:modules"
+    "clean": "npm install rimraf && npm run clean:bower && npm run clean:modules"
   },
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "bower": "^1.7.7",
     "cross-env": "^1.0.7",
     "gulp": "^3.9.1",
-    "electron-prebuilt": "^0.36.0",
+    "electron-prebuilt": "^0.37.6",
     "rimraf": "^2.5.2"
   },
   "devDependenciesOriginal": {
