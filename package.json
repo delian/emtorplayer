@@ -62,6 +62,10 @@
     "rimraf": "^2.5.2"
   },
   "dependencies": {
+    "airplay-js": "^0.2.16",
+    "chromecasts": "^1.8.0",
+    "dlnacasts": "0.0.3",
+    "electron-builder": "^8.6.0",
     "electron-json-storage": "^2.0.0",
     "mkdirp": "^0.5.1",
     "omdb": "^0.5.0",
